@@ -5,7 +5,7 @@
 
 <div align="center">
 
-  Acesse o projeto: [aqui](https://maahnbraz.github.io/SAP010-data-lovers/)  
+  Acesse o projeto: [aqui](https://geanemr.github.io/SAP010-data-lovers/)  
   <br>
   Status do projeto: Concluído ✔<br>
   Tecnologias utilizadas: <br>
