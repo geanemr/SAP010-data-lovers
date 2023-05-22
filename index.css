@@ -41,7 +41,7 @@ main {
 
 .van-img {
   margin: 20px;
-  width: 31vw;
+  width: 45vw;
 }
 
 .van-img:hover {
@@ -56,7 +56,6 @@ footer {
 
 .name {
   color: white;
-  /* font-size: 1.35rem; */
   cursor: pointer;
 }
 
@@ -85,9 +84,6 @@ footer {
     margin: 10%;
     margin-right: 10%;
     padding: 5%;
-    /* text-align: center; */
-    /* font-size: 1.08rem;
-    text-align: center; */
   }
 
   .welcome-text {
@@ -95,20 +91,16 @@ footer {
     margin: 10%;
     margin-right: 10%;
     padding: 5%;
-    /* text-align: center; */
-    /* font-size: 1.2rem;
-    text-align: center; */
   }
 
   .van-img {
-    width: 45vw;
+    width: 55vw;
     display: flex;
     justify-content: center;
     padding: 30%;
   }
 
   footer {
-    /* text-align: center; */
     display: flex;
     justify-content: center;
     width: 80vw;
@@ -139,8 +131,6 @@ footer {
     margin-right: 10%;
     padding: 5%;
   }
-  /* font-size: 1.09rem;
-  } */
 
   .welcome-text {
     width: 80vw;
@@ -148,28 +138,20 @@ footer {
     margin-right: 10%;
     padding: 5%;
   }
-  /*  font-size: 1.25rem;
-  } */
 
   .van-img {
-    width: 60vw;
+    width: 55vw;
     display: flex;
     justify-content: center;
     padding: 30%;
   }
 
   footer {
-    /* text-align: center; */
     width: 60vw;
     display: flex;
     justify-content: center;
     padding: 30%;
   }
-
-  /*
-  .name {
-    font-size: 1.2rem;
-  } */
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) {
@@ -205,7 +187,7 @@ footer {
   }
 
   .van-img {
-    width: 60vw;
+    width: 55vw;
     display: flex;
     justify-content: center;
     padding: 20%;
