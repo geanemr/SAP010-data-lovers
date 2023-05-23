@@ -5,7 +5,7 @@
 
 body {
   background-image: url(img/greensmoke.png);
-  background-size: fill;
+  /* background-size: fill; */
   color: white;
   text-align: center;
   align-content: center;
@@ -17,7 +17,7 @@ body {
 .header-text {
   margin-top: 25px;
   margin-bottom: 20px;
-  -webkit-text-stroke: rgb(232, 240, 228) 0.1rem;
+  -webkit-text-stroke: rgb(232, 240, 228) 0.1rem; /*verificar */
 }
 
 main {
@@ -41,7 +41,7 @@ main {
 
 .van-img {
   margin: 20px;
-  width: 45vw;
+  width: 31vw;
 }
 
 .van-img:hover {
@@ -94,7 +94,7 @@ footer {
   }
 
   .van-img {
-    width: 55vw;
+    width: 45vw;
     display: flex;
     justify-content: center;
     padding: 30%;
@@ -140,7 +140,7 @@ footer {
   }
 
   .van-img {
-    width: 55vw;
+    width: 60vw;
     display: flex;
     justify-content: center;
     padding: 30%;
@@ -187,7 +187,7 @@ footer {
   }
 
   .van-img {
-    width: 55vw;
+    width: 60vw;
     display: flex;
     justify-content: center;
     padding: 20%;
