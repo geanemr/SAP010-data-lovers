@@ -7,14 +7,12 @@
   /*paleta de cores */
   --green: #025939;
   --black: #0d0c00;
-  --light-yellow: #ecf2bd;
   --white: #f2f2dc;
 }
 
 body {
   color: var(--black);
   background-image: url(img/greensmoke.png);
-  background-size: fill;
   display: flex;/*Torna o elemento um flex container automaticamente transformando todos os seus filhos diretos em flex itens.*/
   flex-wrap: wrap; /*Quebra a linha assim que um dos flex itens não puder mais ser compactado*/
   justify-content: center;
@@ -30,8 +28,6 @@ header {
 
 #bbimage {
   width: 280px;
-  /* justify-content: center;
-  display: flex; */
 }
 
 .nav-header {
@@ -69,17 +65,13 @@ header {
 
 #btn-search {
   justify-content: center;
-  /* margin-bottom: 20px;
-  margin-top: 20px; */
   width: 20vw;
   text-align: center;
 
 }
 
  main {
-  /* background-image: url(img/tubos\ de\ ensaio.jpg); */
   border-radius: 40px;
-   /* background-image: url(img/greensmoke.png); */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -126,7 +118,6 @@ header {
   padding: 2vh 1vw;
   border-radius: 50px;
   background-color: var(--green);
-   /* display: flex;  */
   flex-direction: column;
   justify-content: flex-start;
   text-align: center;

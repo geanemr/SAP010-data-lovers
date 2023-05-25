@@ -2,9 +2,8 @@ const dataFunctions = {
   filter: function (characters, value, key) {
     /*esta função faz o filtro de todas as categorias */
     const filter = characters.filter(function (character) {
-      //  console.log(character[key])
-      const filtered = character[key].includes(value);
-
+      const filtered = character[key].includes(value); //O método includes() determina se um array contém um determinado elemento, retornando true ou false apropriadamente. 
+      
       return filtered;
     });
 
@@ -37,7 +36,6 @@ const dataFunctions = {
 
   order: function (characters, sortBy) {
     const copy = [...characters];
-    //  console.log(sortBy)
     if (sortBy === "ascending") {
       return dataFunctions.ascending(copy);
     }
@@ -45,13 +43,13 @@ const dataFunctions = {
   },
 
   searchName: function (characters, name) {
-    const filter = characters.filter(function (character) {
+    const filtered = characters.filter(function (character) { // o método filter cria um novo array contendo apenas os elementos que atendem a uma determinada condição.
       const filteredSearch = character.name
         .toLowerCase()
-        .includes(name.toLowerCase());
+        .includes(name.toLowerCase()); 
       return filteredSearch;
     });
-    return filter;
+    return filtered;
   },
 
   calculatePercentage: function (sizeList, sizeFilteredList) {
