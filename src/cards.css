@@ -4,7 +4,6 @@
 }
 
 :root {
-  /*paleta de cores */
   --green: #025939;
   --black: #0d0c00;
   --white: #f2f2dc;
@@ -13,8 +12,8 @@
 body {
   color: var(--black);
   background-image: url(img/greensmoke.png);
-  display: flex;/*Torna o elemento um flex container automaticamente transformando todos os seus filhos diretos em flex itens.*/
-  flex-wrap: wrap; /*Quebra a linha assim que um dos flex itens não puder mais ser compactado*/
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -92,8 +91,8 @@ header {
 }
 
 .card-container {
-  display: flex; /* alinhamento dos cards. */
-  flex-wrap: wrap; /* alinhamento dos cards. */
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   flex-basis: auto;

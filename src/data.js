@@ -1,8 +1,7 @@
 const dataFunctions = {
   filter: function (characters, value, key) {
-    /*esta função faz o filtro de todas as categorias */
     const filter = characters.filter(function (character) {
-      const filtered = character[key].includes(value); //O método includes() determina se um array contém um determinado elemento, retornando true ou false apropriadamente. 
+      const filtered = character[key].includes(value);
       
       return filtered;
     });
