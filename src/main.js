@@ -1,5 +1,4 @@
 import data from "./data/breakingbad/breakingbad.js";
-
 import dataFunctions from "./data.js";
 
 const charactersElement = data.breaking_bad;
