@@ -7,77 +7,96 @@ const selectStatus = document.querySelector("#select-status");
 const selectCategory = document.querySelector("#select-category");
 const searchForName = document.querySelector("#btn-search");
 const reset = document.querySelector("#reset");
-const percentageElement = document.querySelector("#percentage");
+const searchResult = document.querySelector("#result");
 const selectOrder = document.querySelector("#select-order");
 
 function displayCards(characters) {
-  const arrayResults = characters.map((item) => {
-    const template = `                   
-        <div class="card">
-            <img class="poster-img" src="${item.img}" alt="${item.name}">
+  cardContainer.innerHTML = "";
+  const newArray = Object.entries(characters);
+  newArray.forEach(
+    (character) =>
+      (cardContainer.innerHTML += `
+         <div class="card">
+            <img class="poster-img" src="${character[1].img}" alt="${character[1].name}">
             <ul class="card-text" style="list-style: none">                       
-            <li>Name: ${item.name}</li>
-            <li>NickName: ${item.nickname}</li>
-            <li>Status: ${item.status}</li>
-            <li>Occupation: ${item.occupation}</li>
-            <li>Birthday: ${item.birthday}</li>
-            <li>Portrayed: ${item.portrayed}</li> 
-            <li>Category: ${item.category}</li>
+            <li>Name: ${character[1].name}</li>
+            <li>NickName: ${character[1].nickname}</li>
+            <li>Status: ${character[1].status}</li>
+            <li>Occupation: ${character[1].occupation}</li>
+            <li>Birthday: ${character[1].birthday}</li>
+            <li>Portrayed: ${character[1].portrayed}</li> 
+            <li>Category: ${character[1].category}</li>
             </ul>                
-        </div>
-        `;
-    return template;
-  });
-  return arrayResults.join("");
+        </div>`)
+  );
 }
-cardContainer.innerHTML = displayCards(charactersElement);
 
-selectStatus.addEventListener("change", (event) => {
-  const value = event.target.value;
-  const filteredList = dataFunctions.filter(charactersElement, value, "status");
-  const cards = displayCards(filteredList);
-  cardContainer.innerHTML = cards;
+displayCards(charactersElement);
 
-  const percentage = dataFunctions.calculatePercentage(
-    charactersElement.length,
-    filteredList.length
-  );
-  percentageElement.innerHTML =
-    "This category represents " + percentage + "% of the characters";
-});
+const filters = {
+  status: null,
+  category: null,
+  order: null,
+  updatedList: charactersElement
+};
 
-selectCategory.addEventListener("change", (event) => {
-  const value = event.target.value;
-  const filteredList = dataFunctions.filter(
-    charactersElement,
-    value,
-    "category"
-  );
-  const cards = displayCards(filteredList);
-  cardContainer.innerHTML = cards;
+function applyFilters() {
+  searchForName.value = "";
+  let filteredList = charactersElement;
+  if (filters.category) {
+    filteredList = dataFunctions.filter(filteredList, filters.category, "category");
+  }
+  if (filters.status) {
+    filteredList = dataFunctions.filter(filteredList, filters.status, "status");
+  }
+  if (filters.order) {
+    filteredList = dataFunctions.order(filteredList, filters.order);
+  }
 
-  const percentage = dataFunctions.calculatePercentage(
-    charactersElement.length,
-    filteredList.length
-  );
-  percentageElement.innerHTML =
-    "This category represents " + percentage + "% of the characters";
-});
+  filters.updatedList = filteredList;
 
-selectOrder.addEventListener("change", (event) => {
-  const value = event.target.value;
-  const orderedList = dataFunctions.order(charactersElement, value);
-  const cards = displayCards(orderedList);
-  cardContainer.innerHTML = cards;
-});
+  displayCards(filteredList);
 
-reset.addEventListener("click", (event) => {
-  location.reload(event);
-});
+  const percentage = dataFunctions.calculatePercentage(charactersElement.length, filteredList.length);
+  searchResult.innerHTML = "This category represents " + percentage + "% of the characters";
+}
 
-searchForName.addEventListener("keyup", function (event) {
-  const value = event.target.value;
-  const filteredList = dataFunctions.searchName(charactersElement, value);
-  const cards = displayCards(filteredList);
-  cardContainer.innerHTML = cards;
-});
+function onStatusChange(event) {
+  filters.status = event.target.value;
+  applyFilters();
+}
+
+function onCategoryChange(event) {
+  filters.category = event.target.value;
+  applyFilters();
+}
+
+function onSortChange(event) {
+  filters.order = event.target.value;
+  applyFilters();
+}
+
+function onSearchForName(event) {
+  const { value } = event.target;
+  const searchedName = dataFunctions.searchName(filters.updatedList, value);
+  displayCards(searchedName);
+  if (!searchedName.length) {
+    searchResult.innerHTML = "Character not found";
+  } else {
+    searchResult.innerHTML = "";
+  }
+}
+
+function onResetSearch(event) {
+  location.reload(event)
+}
+
+function onSearch(element, event, callback) {
+  element.addEventListener(event, callback);
+}
+
+onSearch(selectStatus, "change", onStatusChange);
+onSearch(selectCategory, "change", onCategoryChange);
+onSearch(selectOrder, "change", onSortChange);
+onSearch(searchForName, "keyup", onSearchForName);
+onSearch(reset, "click", onResetSearch);
