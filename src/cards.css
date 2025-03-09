@@ -98,7 +98,7 @@ header {
   flex-basis: auto;
 }
 
-.percentage-container {
+.result-container {
   width: 100%;
   height: 20px;
   border-radius: 5px;
@@ -160,7 +160,7 @@ footer {
     font-size: 1.1rem;
   }
 
-  .percentage-container{
+  .result-container{
     font-size: 1.1rem;
   }
 
@@ -194,7 +194,7 @@ footer {
     font-size: 0.9rem;
   }
 
-  .percentage-container{
+  .result-container{
     font-size: 0.9rem;
   }
 
@@ -235,7 +235,7 @@ footer {
     font-size: 0.8rem;
   }
 
-  .percentage-container{
+  .result-container{
     font-size: 0.8rem;
   }
   .card {
