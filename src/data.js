@@ -1,6 +1,6 @@
 const dataFunctions = {
-  filter: function (characters, value, key) {
-    const filter = characters.filter(function (character) {
+  filter: (characters, value, key) => {
+    const filter = characters.filter((character) => {
       const filtered = character[key].includes(value);
       
       return filtered;
@@ -9,8 +9,8 @@ const dataFunctions = {
     return filter;
   },
 
-  ascending: function (characters) {
-    const order = characters.sort(function (a, b) {
+  ascending: (characters) => {
+    const order = characters.sort((a, b) => {
       if (a.name > b.name) {
         return 1;
       } else {
@@ -21,8 +21,8 @@ const dataFunctions = {
     return order;
   },
 
-  descending: function (characters) {
-    const order = characters.sort(function (a, b) {
+  descending: (characters) => {
+    const order = characters.sort((a, b) => {
       if (a.name > b.name) {
         return -1;
       } else {
@@ -33,7 +33,7 @@ const dataFunctions = {
     return order;
   },
 
-  order: function (characters, sortBy) {
+  order: (characters, sortBy) => {
     const copy = [...characters];
     if (sortBy === "ascending") {
       return dataFunctions.ascending(copy);
@@ -41,8 +41,8 @@ const dataFunctions = {
     return dataFunctions.descending(copy);
   },
 
-  searchName: function (characters, name) {
-    const filtered = characters.filter(function (character) { // o método filter cria um novo array contendo apenas os elementos que atendem a uma determinada condição.
+  searchName: (characters, name) => {
+    const filtered = characters.filter((character) => {
       const filteredSearch = character.name
         .toLowerCase()
         .includes(name.toLowerCase()); 
@@ -51,7 +51,7 @@ const dataFunctions = {
     return filtered;
   },
 
-  calculatePercentage: function (sizeList, sizeFilteredList) {
+  calculatePercentage: (sizeList, sizeFilteredList) => {
     return Math.round((sizeFilteredList * 100) / sizeList);
   },
 };
