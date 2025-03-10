@@ -14,21 +14,34 @@ function displayCards(characters) {
   cardContainer.innerHTML = "";
   const newArray = Object.entries(characters);
   newArray.forEach(
-    (character) =>
+    (character, index) =>
       (cardContainer.innerHTML += `
-         <div class="card">
-            <img class="poster-img" src="${character[1].img}" alt="${character[1].name}">
-            <ul class="card-text" style="list-style: none">                       
-            <li>Name: ${character[1].name}</li>
-            <li>NickName: ${character[1].nickname}</li>
-            <li>Status: ${character[1].status}</li>
-            <li>Occupation: ${character[1].occupation}</li>
-            <li>Birthday: ${character[1].birthday}</li>
-            <li>Portrayed: ${character[1].portrayed}</li> 
-            <li>Category: ${character[1].category}</li>
-            </ul>                
-        </div>`)
+         <div class="card" id="card-${index}">
+            <div class="card-inner">
+              <div class="card-front">
+                <img class="poster-img" src="${character[1].img}" alt="${character[1].name}">
+                <h3 style="color: white">${character[1].name}</h3> 
+              </div>
+              <div class="card-back">
+                <ul class="card-text" style="list-style: none">                       
+                  <li>NickName: ${character[1].nickname}</li>
+                  <li>Status: ${character[1].status}</li>
+                  <li>Occupation: ${character[1].occupation}</li>
+                  <li>Birthday: ${character[1].birthday}</li>
+                  <li>Portrayed: ${character[1].portrayed}</li> 
+                  <li>Category: ${character[1].category}</li>
+                </ul>
+              </div>
+            </div>
+         </div>`)
   );
+
+  newArray.forEach((character, index) => {
+    const card = document.querySelector(`#card-${index}`);
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped");
+    });
+  });
 }
 
 displayCards(charactersElement);
@@ -37,14 +50,18 @@ const filters = {
   status: null,
   category: null,
   order: null,
-  updatedList: charactersElement
+  updatedList: charactersElement,
 };
 
 function applyFilters() {
   searchForName.value = "";
   let filteredList = charactersElement;
   if (filters.category) {
-    filteredList = dataFunctions.filter(filteredList, filters.category, "category");
+    filteredList = dataFunctions.filter(
+      filteredList,
+      filters.category,
+      "category"
+    );
   }
   if (filters.status) {
     filteredList = dataFunctions.filter(filteredList, filters.status, "status");
@@ -57,8 +74,12 @@ function applyFilters() {
 
   displayCards(filteredList);
 
-  const percentage = dataFunctions.calculatePercentage(charactersElement.length, filteredList.length);
-  searchResult.innerHTML = "This category represents " + percentage + "% of the characters";
+  const percentage = dataFunctions.calculatePercentage(
+    charactersElement.length,
+    filteredList.length
+  );
+  searchResult.innerHTML =
+    "This category represents " + percentage + "% of the characters";
 }
 
 function onStatusChange(event) {
@@ -88,7 +109,7 @@ function onSearchForName(event) {
 }
 
 function onResetSearch(event) {
-  location.reload(event)
+  location.reload(event);
 }
 
 function onSearch(element, event, callback) {
