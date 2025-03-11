@@ -23,7 +23,8 @@ function displayCards(characters) {
                 <h3 style="color: white">${character[1].name}</h3> 
               </div>
               <div class="card-back">
-                <ul class="card-text" style="list-style: none">                       
+                <ul class="card-text" style="list-style: none">
+                  <li>Name: ${character[1].name}</li>   
                   <li>NickName: ${character[1].nickname}</li>
                   <li>Status: ${character[1].status}</li>
                   <li>Occupation: ${character[1].occupation}</li>
