@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #025939;
+  --black: #0d0c00;
+  --white: #f2f2dc;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(img/greensmoke.png);
+  color: white;
+  text-align: center;
+  align-content: center;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px 0 10px;
+}
+
+.header-text {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  -webkit-text-stroke: rgb(232, 240, 228) 0.1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 0 100px 0 100px;
+}
+
+.welcome-text {
+  margin: 30px 0 120px 0;
+  text-align: center;
+}
+
+.action-text {
+  margin-top: 10px;
+  margin: 30px auto;
+}
+
+.van-img {
+  width: 500px;
+}
+
+.van-img:hover {
+  opacity: 0.5;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: var(--white);
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green);
+  z-index: 1000;
+}
+
+.name {
+  color: white;
+  cursor: pointer;
+}
+
+.name:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .van-img {
+    width: 320px;
+  }
+
+  .welcome-text {
+    margin: 20px 0 20px 0;
+  }
+
+  main {
+    padding: 0 20px 0 20px;
+  }
+
+  body {
+    justify-content: st;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .van-img {
+    width: 260px;
+  }
+
+  body {
+    font-size: 0.75rem;
+  }
+}

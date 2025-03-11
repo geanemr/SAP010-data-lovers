@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Breaking Bad Lovers</title>
+    <link rel="stylesheet" href="cards.css" />
+    <link rel="icon" href="img/bbicon.png" id="bbicon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-header">
+        <a href="index.html"
+          ><button class="btn-header">&laquo; Back</button></a
+        >
+      </nav>
+      <picture style="display: flex; justify-content: center">
+        <img src="img/logobbtransp.png" id="bbimage" alt="" />
+      </picture>
+    </header>
+    <main>
+      <div class="option-container">
+        <label>
+          <select id="select-status" class="btn-option">
+            <option value="" selected disabled hidden>Status</option>
+            <option value="Alive">Alive</option>
+            <option value="Deceased">Dead</option>
+            <option value="Presumed dead">Presumed dead</option>
+          </select>
+        </label>
+        <label>
+          <select id="select-category" class="btn-option">
+            <option value="" selected disabled hidden>Series</option>
+            <option value="Better Call Saul">Better Call Saul</option>
+            <option value="Breaking Bad">Breaking Bad</option>
+          </select>
+        </label>
+        <label>
+          <select id="select-order" class="btn-option">
+            <option value="" selected disabled hidden>Sort</option>
+            <option value="ascending" id="ascending">A to Z</option>
+            <option value="descending" id="descending">Z to A</option>
+          </select>
+        </label>
+      </div>
+      <label>
+          <input
+            type="text"
+            id="btn-search"
+            class="btn-option"
+            placeholder="Search for name"
+          />
+          <button id="reset" class="btn-option">Clear</button>
+      </label>
+      <div class="result-container">
+        <p id="result"></p>
+      </div>
+      <div class="card-container" id="card-container"></div>
+    </main>
+    <footer>
+      <p>
+        Developed by
+        <a
+          href="https://www.linkedin.com/in/geane-moraes-ramos/"
+          style="color: #FFFF"
+        >
+          <span class="name">Geane Ramos</span>
+        </a>
+        and
+        <a
+          href="https://www.linkedin.com/in/marinanbraz/"
+          style="color: #FFFF"
+        >
+          <span class="name">Marina Braz</span>
+        </a>
+      </p>
+    </footer>
+    <div id="root"></div>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
