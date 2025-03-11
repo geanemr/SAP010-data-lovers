@@ -1,85 +1,124 @@
 import data from "./data/breakingbad/breakingbad.js";
-
 import dataFunctions from "./data.js";
 
-const charactersElement = data.breaking_bad; //aqui onde puxa o banco de dados do breakingbad.js para fornecer os personagens.
-const cardContainer = document.querySelector("#card-container"); //Aqui cria os cards.
-const selectStatus = document.querySelector("#select-status"); //Seletor de busca do status.
-const selectCategory = document.querySelector("#select-category"); //Seletor de busca por séries em que o personagem participou.
-const searchForName = document.querySelector("#btn-search"); //cria busca por nome.
-const reset = document.querySelector("#reset"); //cria o argumento de reset.
-const percentageElement = document.querySelector("#percentage");
+const charactersElement = data.breaking_bad;
+const cardContainer = document.querySelector("#card-container");
+const selectStatus = document.querySelector("#select-status");
+const selectCategory = document.querySelector("#select-category");
+const searchForName = document.querySelector("#btn-search");
+const reset = document.querySelector("#reset");
+const searchResult = document.querySelector("#result");
 const selectOrder = document.querySelector("#select-order");
 
 function displayCards(characters) {
-  //cria os cards
-  const arrayResults = characters.map((item) => {  //map nos permite visitar cada um dos elementos da array, coletando neste processo um valor de retorno para cada elemento visitado.
-    //aqui está o método MAP
-    const template = `                   
-        <div class="card">
+  cardContainer.innerHTML = "";
+  const newArray = Object.entries(characters);
+  newArray.forEach(
+    (character, index) =>
+      (cardContainer.innerHTML += `
+         <div class="card" id="card-${index}">
+            <div class="card-inner">
+              <div class="card-front">
+                <img class="poster-img" src="${character[1].img}" alt="${character[1].name}">
+                <h3 style="color: white">${character[1].name}</h3> 
+              </div>
+              <div class="card-back">
+                <ul class="card-text" style="list-style: none">
+                  <li>Name: ${character[1].name}</li>   
+                  <li>NickName: ${character[1].nickname}</li>
+                  <li>Status: ${character[1].status}</li>
+                  <li>Occupation: ${character[1].occupation}</li>
+                  <li>Birthday: ${character[1].birthday}</li>
+                  <li>Portrayed: ${character[1].portrayed}</li> 
+                  <li>Category: ${character[1].category}</li>
+                </ul>
+              </div>
+            </div>
+         </div>`)
+  );
 
-            <img class="poster-img" src="${item.img}" alt="${item.name}">
-            <ul class="card-text" style="list-style: none">                       
-            <li>Name: ${item.name}</li>
-            <li>NickName: ${item.nickname}</li>
-            <li>Status: ${item.status}</li>
-            <li>Occupation: ${item.occupation}</li>
-            <li>Birthday: ${item.birthday}</li>
-            <li>Portrayed: ${item.portrayed}</li> 
-            <li>Category: ${item.category}</li>
-           
-            </ul>                
-
-        </div>
-        `;
-    return template; //a constante acima cria todo o card e suas caracteristicas, puxando os dados da base de dados
+  newArray.forEach((character, index) => {
+    const card = document.querySelector(`#card-${index}`);
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped");
+    });
   });
-  return arrayResults.join(""); //o arrayResults é convertido em uma única string usando o método join("")
 }
-cardContainer.innerHTML = displayCards(charactersElement);
 
-selectStatus.addEventListener("change", (event) => {
-  const value = event.target.value;
-  const filteredList = dataFunctions.filter(charactersElement, value, "status"); //o "filter" está puxando da função filter do data.js
-  const cards = displayCards(filteredList);
-  cardContainer.innerHTML = cards;
+displayCards(charactersElement);
+
+const filters = {
+  status: null,
+  category: null,
+  order: null,
+  updatedList: charactersElement,
+};
+
+function applyFilters() {
+  searchForName.value = "";
+  let filteredList = charactersElement;
+  if (filters.category) {
+    filteredList = dataFunctions.filter(
+      filteredList,
+      filters.category,
+      "category"
+    );
+  }
+  if (filters.status) {
+    filteredList = dataFunctions.filter(filteredList, filters.status, "status");
+  }
+  if (filters.order) {
+    filteredList = dataFunctions.order(filteredList, filters.order);
+  }
+
+  filters.updatedList = filteredList;
+
+  displayCards(filteredList);
 
   const percentage = dataFunctions.calculatePercentage(
     charactersElement.length,
     filteredList.length
   );
-  percentageElement.innerHTML =
+  searchResult.innerHTML =
     "This category represents " + percentage + "% of the characters";
-});
+}
 
-selectCategory.addEventListener("change", (event) => {
-  const value = event.target.value;
-  const filteredList = dataFunctions.filter(charactersElement, value, "category"); //o "filter" está puxando da função filter do data.js
-  const cards = displayCards(filteredList);
-  cardContainer.innerHTML = cards;
+function onStatusChange(event) {
+  filters.status = event.target.value;
+  applyFilters();
+}
 
-  const percentage = dataFunctions.calculatePercentage(
-    charactersElement.length,
-    filteredList.length
-  );
-  percentageElement.innerHTML =
-    "This category represents " + percentage + "% of the characters";
-});
+function onCategoryChange(event) {
+  filters.category = event.target.value;
+  applyFilters();
+}
 
-selectOrder.addEventListener("change", (event) => {
-  const value = event.target.value;
-  const orderedList = dataFunctions.order(charactersElement, value);
-  const cards = displayCards(orderedList);
-  cardContainer.innerHTML = cards;
-});
+function onSortChange(event) {
+  filters.order = event.target.value;
+  applyFilters();
+}
 
-reset.addEventListener("click", (event) => {
+function onSearchForName(event) {
+  const { value } = event.target;
+  const searchedName = dataFunctions.searchName(filters.updatedList, value);
+  displayCards(searchedName);
+  if (!searchedName.length) {
+    searchResult.innerHTML = "Character not found";
+  } else {
+    searchResult.innerHTML = "";
+  }
+}
+
+function onResetSearch(event) {
   location.reload(event);
-});
+}
 
-searchForName.addEventListener("keyup", function (event) {
-  const value = event.target.value;
-  const filteredList = dataFunctions.searchName(charactersElement, value);
-  const cards = displayCards(filteredList);
-  cardContainer.innerHTML = cards;
-});
+function onSearch(element, event, callback) {
+  element.addEventListener(event, callback);
+}
+
+onSearch(selectStatus, "change", onStatusChange);
+onSearch(selectCategory, "change", onCategoryChange);
+onSearch(selectOrder, "change", onSortChange);
+onSearch(searchForName, "keyup", onSearchForName);
+onSearch(reset, "click", onResetSearch);
