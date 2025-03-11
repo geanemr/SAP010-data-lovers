@@ -1,9 +1,18 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #025939;
+  --black: #0d0c00;
+  --white: #f2f2dc;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-image: url(img/greensmoke.png);
   color: white;
   text-align: center;
@@ -11,36 +20,41 @@ body {
   font-family: Helvetica, sans-serif;
   font-size: 1.1rem;
   letter-spacing: 1px;
+  padding-bottom: 60px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px 0 10px;
 }
 
 .header-text {
   margin-top: 25px;
   margin-bottom: 20px;
-  -webkit-text-stroke: rgb(232, 240, 228) 0.1rem; 
+  -webkit-text-stroke: rgb(232, 240, 228) 0.1rem;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-content: center;
-}
-
-.main-text {
-  width: 50vw;
-  margin: 30px auto;
-  text-align: justify;
+  padding: 0 100px 0 100px;
 }
 
 .welcome-text {
-  margin-top: 10px;
-  width: 50vw;
   margin: 30px auto;
-  text-align: justify;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.action-text {
+  margin-top: 10px;
+  margin: 30px auto;
 }
 
 .van-img {
-  margin: 20px;
-  width: 31vw;
+  width: 500px;
 }
 
 .van-img:hover {
@@ -48,9 +62,17 @@ main {
 }
 
 footer {
-  color: white;
-  margin-bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  color: var(--white);
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green);
+  z-index: 1000;
 }
 
 .name {
@@ -62,141 +84,26 @@ footer {
   opacity: 0.5;
 }
 
+@media screen and (max-width: 768px) {
+  .van-img {
+    width: 320px;
+  }
+
+  .welcome-text {
+    margin: 10px auto;
+  }
+
+  main {
+    padding: 0 20px 0 20px;
+  }
+}
+
 @media screen and (max-width: 480px) {
-  body {
-    font-size: 1.2rem;
-    text-align: center;
-    justify-content: center;
-    margin: 0;
-    width: 80vw;
-  }
-
-  .header-text {
-    margin-bottom: 0px;
-    font-size: 1.79rem;
-    width: 80vw;
-    margin: 10%;
-  }
-
-  .main-text {
-    width: 80vw;
-    margin: 10%;
-    margin-right: 10%;
-    padding: 5%;
-  }
-
-  .welcome-text {
-    width: 80vw;
-    margin: 10%;
-    margin-right: 10%;
-    padding: 5%;
-  }
-
   .van-img {
-    width: 45vw;
-    display: flex;
-    justify-content: center;
-    padding: 30%;
+    width: 280px;
   }
 
-  footer {
-    display: flex;
-    justify-content: center;
-    width: 80vw;
-    padding: 10%;
-  }
-}
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
   body {
-    font-size: 1.2rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0;
-    width: 80vw;
-  }
-  .header-text {
-    margin-bottom: 0px;
-    font-size: 1.82rem;
-    width: 80vw;
-    margin: 10%;
-  }
-
-  .main-text {
-    width: 80vw;
-    margin: 10%;
-    margin-right: 10%;
-    padding: 5%;
-  }
-
-  .welcome-text {
-    width: 80vw;
-    margin: 10%;
-    margin-right: 10%;
-    padding: 5%;
-  }
-
-  .van-img {
-    width: 60vw;
-    display: flex;
-    justify-content: center;
-    padding: 30%;
-  }
-
-  footer {
-    width: 60vw;
-    display: flex;
-    justify-content: center;
-    padding: 30%;
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1023px) {
-  body {
-    font-size: 1.2rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0;
-    width: 80vw;
-  }
-
-  .header-text {
-    margin-bottom: 0px;
-    font-size: 1.82rem;
-    width: 80vw;
-    margin: 10%;
-  }
-
-  .main-text {
-    width: 70vw;
-    margin: 10%;
-    margin-right: 10%;
-    padding: 5%;
-  }
-
-  .welcome-text {
-    width: 70vw;
-    margin: 10%;
-    margin-right: 10%;
-    padding: 5%;
-  }
-
-  .van-img {
-    width: 60vw;
-    display: flex;
-    justify-content: center;
-    padding: 20%;
-  }
-
-  footer {
-    width: 70vw;
-    display: flex;
-    justify-content: center;
-    padding: 10%;
-    margin-top: 35px;
+    font-size: 0.85rem;
   }
 }
