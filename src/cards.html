@@ -7,12 +7,11 @@
     <link rel="icon" href="img/bbicon.png" id="bbicon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-
   <body>
     <header class="header">
       <nav class="nav-header">
         <a href="index.html"
-          ><button class="btn-header">&laquo; Previous</button></a
+          ><button class="btn-header">&laquo; Back</button></a
         >
       </nav>
       <picture style="display: flex; justify-content: center">
@@ -29,7 +28,6 @@
             <option value="Presumed dead">Presumed dead</option>
           </select>
         </label>
-
         <label>
           <select id="select-category" class="btn-option">
             <option value="" selected disabled hidden>Series</option>
@@ -37,7 +35,6 @@
             <option value="Breaking Bad">Breaking Bad</option>
           </select>
         </label>
-
         <label>
           <select id="select-order" class="btn-option">
             <option value="" selected disabled hidden>Sort</option>
@@ -46,16 +43,7 @@
           </select>
         </label>
       </div>
-
-      <label
-        ><p
-          style="
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            margin-bottom: 40px;
-          "
-        >
+      <label>
           <input
             type="text"
             id="btn-search"
@@ -63,15 +51,12 @@
             placeholder="Search for name"
           />
           <button id="reset" class="btn-option">Clear</button>
-        </p>
       </label>
-
       <div class="result-container">
         <p id="result"></p>
       </div>
       <div class="card-container" id="card-container"></div>
     </main>
-
     <footer>
       <p>
         Developed by
@@ -90,9 +75,7 @@
         </a>
       </p>
     </footer>
-
     <div id="root"></div>
-
     <script src="main.js" type="module"></script>
   </body>
 </html>

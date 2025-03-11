@@ -21,6 +21,7 @@ body {
   font-size: 1.1rem;
   letter-spacing: 1px;
   padding-bottom: 60px;
+  min-height: 100vh;
 }
 
 header {
@@ -43,9 +44,8 @@ main {
 }
 
 .welcome-text {
-  margin: 30px auto;
+  margin: 30px 0 120px 0;
   text-align: center;
-  margin-bottom: 100px;
 }
 
 .action-text {
@@ -90,20 +90,24 @@ footer {
   }
 
   .welcome-text {
-    margin: 10px auto;
+    margin: 20px 0 20px 0;
   }
 
   main {
     padding: 0 20px 0 20px;
   }
+
+  body {
+    justify-content: st;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .van-img {
-    width: 280px;
+    width: 260px;
   }
 
   body {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 }
