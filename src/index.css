@@ -97,17 +97,13 @@ footer {
   }
 
   body {
-    justify-content: st;
+    font-size: 0.85rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .van-img {
     width: 260px;
-  }
-
-  body {
-    font-size: 0.75rem;
   }
 
   .welcome-text {
